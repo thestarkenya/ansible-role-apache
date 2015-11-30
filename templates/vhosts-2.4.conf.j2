@@ -1,4 +1,3 @@
-
 DirectoryIndex index.php index.html
 
 {# Set up VirtualHosts #}
@@ -24,7 +23,6 @@ DirectoryIndex index.php index.html
 </VirtualHost>
 
 {% endfor %}
-
 {# Set up SSL VirtualHosts #}
 {% for vhost in apache_vhosts_ssl %}
 <VirtualHost *:{{ apache_listen_port_ssl }}>
