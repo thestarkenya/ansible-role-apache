@@ -2,9 +2,13 @@
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Define apache_packages.
+- name: Define apache_service_name.
   set_fact:
-    apache_packages: "{{ __apache_packages | list }}"
+    apache_service_name: "{{ __apache_service_name }}"
+  when: apache_service_name is not defined
+
+- name: Define apache_packages.
+  set_fact: apache_packages={{ __apache_packages | list }}
   when: apache_packages is not defined
 
 - include: setup-RedHat.yml
@@ -13,8 +17,5 @@
 - include: configure-RedHat.yml
   when: ansible_os_family == "RedHat"
 
-- name: Ensure Apache has selected state and enabled on boot.
-  service:
-    name: "{{ apache_daemon }}"
-    state: started
-    enabled: yes
+- name: Start and enable Apache.
+  service: name={{ apache_service_name }} state=started enabled=yes

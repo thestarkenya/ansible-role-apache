@@ -1,0 +1,24 @@
+DirectoryIndex index.php index.html
+
+{% for vhost in apache_vhosts %}
+<VirtualHost *:{{ apache_listen_port }}>
+  ServerName {{ vhost.servername }}
+{% if vhost.serveralias is defined %}
+  ServerAlias {{ vhost.serveralias }}
+{% endif %}
+  DocumentRoot {{ vhost.documentroot }}
+
+{% if vhost.serveradmin is defined %}
+  ServerAdmin {{ vhost.serveradmin }}
+{% endif %}
+  <Directory "{{ vhost.documentroot }}">
+    AllowOverride All
+    Options -Indexes +FollowSymLinks
+    Require all granted
+  </Directory>
+{% if vhost.extra_parameters is defined %}
+  {{ vhost.extra_parameters }}
+{% endif %}
+</VirtualHost>
+
+{% endfor %}

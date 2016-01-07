@@ -1,7 +1,8 @@
 ---
-- name: Ensure Apache is installed.
-  yum:
-    name: "{{ item }}"
-    state: installed
-    enablerepo: "{{ apache_enablerepo }}"
+- name: Define apache_enablerepo.
+  set_fact: apache_enablerepo={{ __apache_enablerepo }}
+  when: apache_enablerepo is not defined
+
+- name: Install Apache packages.
+  yum: name={{ item }} state=installed enablerepo={{ apache_enablerepo }}
   with_items: apache_packages

@@ -1,16 +1,11 @@
 ---
-apache_conf_path: /etc/httpd/conf.d
-apache_daemon: httpd
-apache_server_root: /etc/httpd
-
-apache_vhosts_version: 2.4
-
+# Pass in a comma-separated list of repos to use (e.g. "remi,epel").
+__apache_enablerepo: ""
+__apache_service_name: httpd
 __apache_packages:
   - httpd
-  - httpd-devel
-  - mod_ssl
-  - openssh
 
-apache_ports_configuration_items:
+apache_config_dir: /etc/httpd
+apache_ports_config:
   - regexp: "^Listen "
     line: Listen {{ apache_listen_port }}
