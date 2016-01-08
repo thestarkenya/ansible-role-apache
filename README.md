@@ -14,11 +14,10 @@ Available variables are listed below, along with default values (see `defaults/m
 
 ```yaml
 apache_listen_port: 80
-apache_listen_port_ssl: 443
 
 apache_vhosts_use_template: true
 apache_vhosts_file: vhosts.conf
-apache_vhosts: []
+apache_vhosts_hosts: []
 ```
 
 ## Dependencies
@@ -40,7 +39,7 @@ None
 Inside `vars/main.yml`:
 
 ```yaml
-apache_vhosts:
+apache_vhosts_hosts:
   - servername: www.local.dev
     serveralias: local.dev
     documentroot: /var/www/html

@@ -1,12 +1,6 @@
 ---
 apache_listen_port: 80
-apache_listen_port_ssl: 443
 
 apache_vhosts_use_template: true
 apache_vhosts_file: vhosts.conf
-apache_vhosts: []
-  # - servername: local.dev
-  #   documentroot: /var/www/html
-  #   # serveradmin: ...
-  #   # serveralias: ...
-  #   # extra_parameters: ...
+apache_vhosts_hosts: []

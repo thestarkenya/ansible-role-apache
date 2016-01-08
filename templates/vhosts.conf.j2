@@ -1,6 +1,6 @@
 DirectoryIndex index.php index.html
 
-{% for vhost in apache_vhosts %}
+{% for vhost in apache_vhosts_hosts %}
 <VirtualHost *:{{ apache_listen_port }}>
   ServerName {{ vhost.servername }}
 {% if vhost.serveralias is defined %}
