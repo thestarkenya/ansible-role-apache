@@ -5,7 +5,6 @@ __apache_service_name: httpd
 __apache_packages:
   - httpd
 
-apache_config_dir: /etc/httpd
 apache_ports_config:
   - regexp: "^Listen "
     line: Listen {{ apache_listen_port }}

@@ -4,5 +4,5 @@
   when: apache_enablerepo is not defined
 
 - name: Install Apache packages.
-  yum: name={{ item }} state=installed enablerepo={{ apache_enablerepo }}
+  yum: name={{ item }} state=present enablerepo={{ apache_enablerepo }}
   with_items: apache_packages

@@ -3,12 +3,11 @@
   include_vars: "{{ ansible_os_family }}.yml"
 
 - name: Define apache_service_name.
-  set_fact:
-    apache_service_name: "{{ __apache_service_name }}"
+  set_fact: apache_service_name={{ __apache_service_name }}
   when: apache_service_name is not defined
 
 - name: Define apache_packages.
-  set_fact: apache_packages={{ __apache_packages | list }}
+  set_fact: apache_packages="{{ __apache_packages | list }}"
   when: apache_packages is not defined
 
 - include: setup-RedHat.yml

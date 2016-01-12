@@ -1,7 +1,7 @@
 ---
 - name: Configure Apache.
   lineinfile:
-    dest: "{{ apache_config_dir }}/conf/{{ apache_service_name }}.conf"
+    dest: "/etc/httpd/conf/httpd.conf"
     state: present
     line: "{{ item.line }}"
     regexp: "{{ item.regexp }}"
@@ -11,7 +11,7 @@
 - name: Copy Apache vhost.conf.
   template:
     src: vhosts.conf.j2
-    dest: "{{ apache_config_dir }}/conf.d/{{ apache_vhosts_file }}"
+    dest: "/etc/httpd/conf.d/{{ apache_vhosts_file }}"
     owner: root
     group: root
   notify: restart apache
