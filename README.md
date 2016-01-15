@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/rwanyoike/ansible-role-apache.svg)](https://travis-ci.org/rwanyoike/ansible-role-apache) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/rwanyoike/ansible-role-apache/master/LICENSE)
 
-Installs and configures Ansible on RHEL/CentOS ~~or Debian/Ubuntu~~.
+Installs and configures Apache on RHEL/CentOS ~~or Debian/Ubuntu~~.
 
 ## Requirements
 
