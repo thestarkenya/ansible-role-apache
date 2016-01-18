@@ -1,20 +1,31 @@
 ---
-- name: Include OS-specific variables.
+- name: include os-specific variables
   include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Define apache_service_name.
-  set_fact: apache_service_name={{ __apache_service_name }}
-  when: apache_service_name is not defined
-
-- name: Define apache_packages.
+- name: define apache_packages
   set_fact: apache_packages="{{ __apache_packages | list }}"
   when: apache_packages is not defined
 
 - include: setup-RedHat.yml
   when: ansible_os_family == "RedHat"
 
-- include: configure-RedHat.yml
-  when: ansible_os_family == "RedHat"
+- name: configure apache httpd.conf
+  lineinfile:
+    dest: /etc/httpd/conf/httpd.conf
+    state: present
+    line: "{{ item.line }}"
+    regexp: "{{ item.regexp }}"
+  with_items: apache_ports_config
+  notify: restart apache
 
-- name: Start and enable Apache.
-  service: name={{ apache_service_name }} state=started enabled=yes
+- name: copy apache vhost.conf
+  template:
+    src: vhosts.conf.j2
+    dest: /etc/httpd/conf.d/{{ apache_vhosts_file }}
+    owner: root
+    group: root
+  notify: restart apache
+  when: apache_vhosts_use_template
+
+- name: start and enable apache
+  service: name=httpd state=started enabled=yes
