@@ -1,6 +1,6 @@
 # Ansible Role: Apache
 
-[![Build Status](https://img.shields.io/travis/rwanyoike/ansible-role-apache.svg)](https://travis-ci.org/rwanyoike/ansible-role-apache) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/rwanyoike/ansible-role-apache/master/LICENSE)
+[![Build Status](https://img.shields.io/travis/thestarkenya/ansible-role-apache.svg)](https://travis-ci.org/thestarkenya/ansible-role-apache) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/thestarkenya/ansible-role-apache/master/LICENSE)
 
 Installs and configures Apache on RHEL/CentOS ~~or Debian/Ubuntu~~.
 
@@ -33,7 +33,7 @@ None
     - vars/main.yml
 
   roles:
-    - role: rwanyoike.apache
+    - role: ansible-role-apache
 ```
 
 Inside `vars/main.yml`:
@@ -53,8 +53,3 @@ apache_vhosts_hosts:
 ## License
 
 MIT
-
-## Author Information
-
-- This role was created in 2014 by [Jeff Geerling](http://jeffgeerling.com/), author of [Ansible for DevOps](http://ansiblefordevops.com/).
-- This role was forked in 2015 by [Raymond Wanyoike](https://github.com/rwanyoike).
